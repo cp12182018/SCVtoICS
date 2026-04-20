@@ -1,0 +1,5 @@
+{
+  "name": "CSV to ICS Calendar Converter",
+  "description": "Convert CSV spreadsheets with milestones and dates into .ics calendar files for easy import into Google Calendar, Outlook, or Apple Calendar.",
+  "requestFramePermissions": []
+}
