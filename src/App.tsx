@@ -78,6 +78,18 @@ export default function App() {
     document.body.removeChild(link);
   };
 
+  const downloadTemplate = () => {
+    const headers = "Milestone,Target Date,Calendar Date,Proposed Dates,Day of the Week,Team Responsible,Primary Point of Contact,Notes\n";
+    const sampleRow = "Project Kickoff,,04/23/2026,,Thursday,Engineering,Jane Doe,Initial meeting to discuss requirements\n";
+    const blob = new Blob([headers + sampleRow], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.setAttribute('download', 'calendar_template.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-indigo-100 selection:text-indigo-900">
       {/* Header */}
@@ -217,6 +229,14 @@ export default function App() {
                           <span>Optional: Team Responsible, Notes, POC</span>
                         </li>
                       </ul>
+                      
+                      <button
+                        onClick={downloadTemplate}
+                        className="text-xs flex items-center gap-1.5 text-indigo-600 hover:text-indigo-700 font-semibold mt-4 py-1.5 px-3 bg-indigo-50 hover:bg-indigo-100 rounded-md transition-colors"
+                      >
+                        <Download size={14} />
+                        Download CSV Template
+                      </button>
                     </div>
 
                     <div className="pt-4 border-t border-slate-100 space-y-4">
